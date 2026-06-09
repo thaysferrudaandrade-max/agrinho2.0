@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVida - O Futuro do Agronegócio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Agro<span>Vida</span></div>
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#pilares">Pilares</a>
+            <a href="#tecnologia">Tecnologia</a>
+            <a href="#simulador">Simulador</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <div class="banner-text">
+            <h1>O Agronegócio na Era Digital</h1>
+            <p>Conectando a força do campo à inovação tecnológica para alimentar o mundo de forma sustentável.</p>
+            <a href="#sobre" class="btn">Saiba Mais</a>
+        </div>
+    </section>
+
+    <section id="sobre" class="content-section">
+        <h2>Sobre o Agronegócio</h2>
+        <p>O agronegócio é uma das molas propulsoras da economia global. Longe de ser apenas o cultivo da terra, ele envolve uma cadeia complexa que vai desde a fabricação de insumos agrícolas, passando pela produção no campo, até a industrialização e distribuição dos alimentos e derivados.</p>
+        
+        <div class="info-cards">
+            <div class="card">
+                <h3>PIB e Economia</h3>
+                <p>Responsável por grande parte das exportações, garantindo a balança comercial positiva e gerando milhões de empregos diretos e indiretos.</p>
+            </div>
+            <div class="card">
+                <h3>Segurança Alimentar</h3>
+                <p>Com a população mundial em crescimento, o agro tem a missão vital de aumentar a produtividade sem expandir desenfreadamente as áreas de cultivo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pilares" class="bg-light content-section">
+        <h2>Os Três Pilares da Sustentabilidade</h2>
+        <div class="pilares-container">
+            <div class="pilar">
+                <h4>Produtividade</h4>
+                <p>Produzir mais em menos espaço, otimizando o uso da água, solo e sementes de alta qualidade.</p>
+            </div>
+            <div class="pilar">
+                <h4>Preservação</h4>
+                <p>Integração Lavoura-Pecuária-Floresta (ILPF) e práticas que reduzem a emissão de carbono.</p>
+            </div>
+            <div class="pilar">
+                <h4>Rentabilidade</h4>
+                <p>Garantir que o produtor rural tenha lucro para reinvestir em novas tecnologias e melhorias na propriedade.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tecnologia" class="content-section">
+        <h2>Tecnologia e Inovação (Agrotechs)</h2>
+        <p>A transformação digital chegou com força ao campo. Hoje, a agricultura de precisão utiliza ferramentas de ponta para monitorar cada centímetro da lavoura.</p>
+        <ul>
+            <li><strong>Drones:</strong> Mapeamento aéreo, identificação de pragas e aplicação localizada de defensivos.</li>
+            <li><strong>Sensores IoT:</strong> Medidores de umidade do solo e temperatura em tempo real.</li>
+            <li><strong>Tratores Autônomos:</strong> Máquinas guiadas por GPS que trabalham com precisão milimétrica, evitando desperdícios.</li>
+            <li><strong>Big Data:</strong> Cruzamento de dados climáticos históricos para prever o melhor momento de plantio e colheita.</li>
+        </ul>
+    </section>
+
+    <section id="simulador" class="bg-light content-section">
+        <h2>Simulador de Lucro Estimado</h2>
+        <p>Preencha os dados abaixo para calcular uma estimativa bruta calculada instantaneamente pelo seu navegador (via JavaScript).</p>
+        
+        <form id="agroForm">
+            <label for="hectares">Quantidade de Hectares:</label>
+            <input type="number" id="hectares" name="hectares" placeholder="Ex: 50" required>
+
+            <label for="cultura">Tipo de Cultura:</label>
+            <select id="cultura" name="cultura">
+                <option value="soja">Soja</option>
+                <option value="milho">Milho</option>
+                <option value="algodao">Algodão</option>
+            </select>
+
+            <button type="button" onclick="calcularLucroComJS()">Calcular via JavaScript</button>
+        </form>
+
+        <div id="resultado" class="resultado-box"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AgroVida - Tecnificando o Campo. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function calcularLucroComJS() {
+            // Pega os valores digitados na tela
+            const hectares = parseFloat(document.getElementById('hectares').value);
+            const cultura = document.getElementById('cultura').value;
+            const resultadoDiv = document.getElementById('resultado');
+
+            // Validação simples
+            if (!hectares || hectares <= 0) {
+                alert("Por favor, insira uma quantidade válida de hectares.");
+                return;
+            }
+
+            // Variáveis de cálculo (Valores médios de mercado)
+            let precoSaca = 0;
+            let rendimentoPorHectare = 0; // em sacas
+
+            // A mesma lógica que estava no Java, agora em JavaScript
+            switch (cultura) {
+                case "soja":
+                    rendimentoPorHectare = 60; // 60 sacas por hectare
+                    precoSaca = 135.00;        // Preço da saca
+                    break;
+                case "milho":
+                    rendimentoPorHectare = 100; 
+                    precoSaca = 60.00;
+                    break;
+                case "algodao":
+                    rendimentoPorHectare = 280; 
+                    precoSaca = 85.00;
+                    break;
+            }
+
+            // Executa as contas matemáticas
+            const producaoEstimada = hectares * rendimentoPorHectare;
+            const faturamentoEstimado = producaoEstimada * precoSaca;
+
+            // Mostra o resultado diretamente na tela sem precisar de servidor
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.innerHTML = `
+                <h3>Resultado da Simulação (JS):</h3>
+                <p><strong>Cultura selecionada:</strong> ${cultura.toUpperCase()}</p>
+                <p><strong>Produção Estimada:</strong> ${producaoEstimada.toLocaleString('pt-BR')} sacas</p>
+                <p><strong>Faturamento Estimado:</strong> R$ ${faturamentoEstimado.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
+                <small>*Valores fictícios baseados em médias de mercado.</small>
+            `;
+        }
+    </script>
+</body>
+</html>
